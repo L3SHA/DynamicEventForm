@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title={cardTitle} variant="base" icon-name={iconName}>
+        <lightning-spinner if:true={showSpinner} class="loadingSpinner" variant="brand"></lightning-spinner>
+        <lightning-button-group class="slds-m-top_small slds-theme_brand" slot="actions">
+            <lightning-button class="slds-theme_brand" variant="brand" label="Save" type="submit" onclick={handleSave}>
+            </lightning-button>
+        </lightning-button-group>
+        <div class="slds-card__body_inner">
+            <lightning-messages></lightning-messages>
+                <lightning-layout-item for:each={recordFields} for:item="field" key={field.label}>
+                    <lightning-input 
+                        if:true={field.isInput}
+                        name={field.name} 
+                        label={field.label}
+                        value={field.value}
+                        type={field.type}
+                        pattern={field.pattern}
+                        formatter={field.formatter}
+                        step={field.step}
+                        min={field.min}
+                        max={field.max}
+                        checked={field.value}
+                        data-my-id={field.dataMyId}>
+                        </lightning-input>
+                      
+                    <lightning-combobox
+                        if:true={field.isCombobox}
+                        name={field.name}
+                        value={field.value}
+                        label={field.name}
+                        options={field.picklistValues}
+                        data-my-id={field.dataMyId}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+        </div>
+    </lightning-card>
+</template>

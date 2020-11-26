@@ -1,0 +1,4 @@
+<aura:component implements="lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="recordId" type="String" />
+    <c:eventCreateForm recordId="{!v.recordId}" />
+</aura:component>	
